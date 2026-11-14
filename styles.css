@@ -706,3 +706,23 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
 h1 { font-weight: 500; -webkit-text-stroke: .6px currentColor; }
 .trust__num, .press__num, .google-score__num, .header__name { font-weight: 500; -webkit-text-stroke: .3px currentColor; }
 .result figcaption strong { font-weight: 700; }
+
+/* ---------- Hero no celular/tablet: cards longe do rosto ---------- */
+@media (max-width: 920px) {
+  .hero__visual .float-card--top,
+  .portrait__seal { display: none; }
+
+  .hero__visual .float-card--left {
+    top: auto; bottom: 20%; left: -3%; right: auto;
+  }
+  .hero__visual .float-card--bottom {
+    top: auto; bottom: 5%; right: -3%; left: auto;
+  }
+  .hero__visual .float-card {
+    padding: .55rem .8rem; gap: .55rem;
+    animation-duration: 7s;
+  }
+  .hero__visual .float-card strong { font-size: .78rem; }
+  .hero__visual .float-card small { font-size: .66rem; }
+  .hero__visual .float-card__badge { width: 32px; height: 32px; font-size: .78rem; border-radius: 8px; }
+}
