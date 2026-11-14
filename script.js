@@ -5,7 +5,7 @@ const CONFIG = {
   whatsapp: "5544999000568",            // DDI + DDD + número, só dígitos
   phoneLabel: "(44) 99900-0568",
   address: "Mundo Novo - MS",           // ex.: "Rua X, 123 - Centro, Mundo Novo - MS"
-  cro: "CRO-MS 0000",
+  cro: "CRO-MS 7090",
 };
 
 /* Avaliações reais do Google (pasta "prova social") */

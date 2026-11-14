@@ -598,7 +598,7 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
 }
 
 /* ---------- Na imprensa ---------- */
-.press { padding-bottom: 0; }
+.press { }
 .press__card {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -725,4 +725,29 @@ h1 { font-weight: 500; -webkit-text-stroke: .6px currentColor; }
   .hero__visual .float-card strong { font-size: .78rem; }
   .hero__visual .float-card small { font-size: .66rem; }
   .hero__visual .float-card__badge { width: 32px; height: 32px; font-size: .78rem; border-radius: 8px; }
+}
+
+/* ---------- Urgência + "outros procedimentos" ---------- */
+.urgent {
+  margin-top: 1.4rem;
+  display: flex; align-items: center; gap: 1.4rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: var(--radius);
+  background: var(--sage-100);
+  border: 1px solid var(--line);
+}
+.urgent__icon {
+  flex: 0 0 54px; height: 54px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--green-900);
+}
+.urgent__icon svg { width: 24px; height: 24px; fill: none; stroke: var(--cream-100); stroke-width: 1.5; stroke-linejoin: round; }
+.urgent__text { flex: 1; }
+.urgent__text h3 { margin: 0 0 .2rem; font-size: 1.25rem; font-weight: 700; }
+.urgent__text p { margin: 0; font-size: .92rem; }
+.urgent .btn--light { background: var(--green-900); color: var(--cream-100); white-space: nowrap; }
+.urgent .btn--light:hover { background: var(--green-800); }
+.services__more { text-align: center; margin: 1.6rem 0 0; font-size: .92rem; }
+@media (max-width: 760px) {
+  .urgent { flex-direction: column; align-items: flex-start; padding: 1.4rem; }
+  .urgent .btn { width: 100%; }
 }
