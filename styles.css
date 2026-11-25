@@ -301,10 +301,12 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
 .about__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
 .about__seal {
   position: absolute; top: -26px; left: -26px;
-  width: 104px; padding: 22px;
-  background: var(--sage-500);
+  width: 116px; padding: 24px;
+  background: var(--green-900);
+  border: 4px solid var(--cream-50);
   border-radius: 50%;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
 }
 .float-card--quote {
   position: absolute; bottom: -28px; right: -24px;
@@ -578,7 +580,7 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
   .float-card--top { right: -2%; top: 4%; }
   .float-card--left { left: -2%; }
   .float-card--bottom { right: -2%; }
-  .about__seal { width: 78px; padding: 16px; top: -18px; left: -6px; }
+  .about__seal { width: 88px; padding: 17px; top: -18px; left: -6px; }
   .float-card--quote { position: relative; right: auto; bottom: auto; margin: -2.5rem 1rem 0; max-width: none; }
 
   .services, .results { grid-template-columns: 1fr; }
