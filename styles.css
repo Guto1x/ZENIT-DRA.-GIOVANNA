@@ -276,22 +276,13 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
   transition: transform .35s ease, box-shadow .35s ease, border-color .35s;
 }
 .service:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.service h3 { margin: 1.3rem 0 .6rem; }
+.service h3 { margin: 0 0 .6rem; }
 .service p { font-size: .92rem; }
-.service__icon {
-  width: 54px; height: 54px; border-radius: 14px;
-  display: grid; place-items: center;
-  background: var(--sage-100);
-  transition: background .35s;
-}
-.service__icon svg { width: 26px; height: 26px; fill: none; stroke: var(--green-900); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; transition: stroke .35s; }
-.service:hover .service__icon { background: var(--green-900); }
-.service:hover .service__icon svg { stroke: var(--cream-100); }
 .service__link { font-size: .85rem; font-weight: 600; color: var(--green-900); display: inline-flex; gap: .4rem; }
 .service__link span { transition: transform .25s; }
 .service:hover .service__link span { transform: translateX(4px); }
 .service__tag {
-  position: absolute; top: 1.6rem; right: 1.6rem;
+  display: inline-block; margin-bottom: 1rem;
   font-size: .66rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
   padding: .35rem .7rem; border-radius: 999px;
   background: var(--sage-500); color: var(--white);
@@ -299,8 +290,6 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
 .service--featured { background: var(--green-900); border-color: var(--green-900); }
 .service--featured h3, .service--featured .service__link { color: var(--cream-100); }
 .service--featured p { color: rgba(239, 236, 229, .75); }
-.service--featured .service__icon { background: rgba(239, 236, 229, .1); }
-.service--featured .service__icon svg { stroke: var(--cream-100); }
 
 /* ---------- About ---------- */
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
@@ -703,7 +692,9 @@ h1 em, h2 em { font-style: normal; color: var(--sage-500); }
 }
 
 /* ---------- Legibilidade da fonte de títulos ---------- */
-h1 { font-weight: 500; -webkit-text-stroke: .6px currentColor; }
+h1, h2, h3 { font-weight: 700; -webkit-text-stroke: .7px currentColor; }
+h3 { -webkit-text-stroke: .5px currentColor; }
+h1 { -webkit-text-stroke: 1px currentColor; }
 .trust__num, .press__num, .google-score__num, .header__name { font-weight: 500; -webkit-text-stroke: .3px currentColor; }
 .result figcaption strong { font-weight: 700; }
 
@@ -737,7 +728,7 @@ h1 { font-weight: 500; -webkit-text-stroke: .6px currentColor; }
   border: 1px solid var(--line);
 }
 .urgent__icon {
-  flex: 0 0 54px; height: 54px; border-radius: 50%;
+  flex: 0 0 auto; width: 54px; height: 54px; border-radius: 50%;
   display: grid; place-items: center; background: var(--green-900);
 }
 .urgent__icon svg { width: 24px; height: 24px; fill: none; stroke: var(--cream-100); stroke-width: 1.5; stroke-linejoin: round; }
