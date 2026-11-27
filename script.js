@@ -131,6 +131,7 @@ form.addEventListener("submit", e => {
     form.msg.value.trim() ? `*Mensagem:* ${form.msg.value.trim()}` : "",
   ].filter(Boolean).join("\n");
   window.open(waLink(msg), "_blank", "noopener");
+  sendFeedback();
 });
 
 // Validação na hora (ao sair do campo)
@@ -170,3 +171,23 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+// Feedback no botão de envio
+const sendBtn = $("#sendBtn");
+const sendLabel = sendBtn.querySelector(".btn__label");
+let sendTimers = [];
+const setLabel = text => {
+  sendLabel.classList.remove("is-swap");
+  void sendLabel.offsetWidth;
+  sendLabel.textContent = text;
+  sendLabel.classList.add("is-swap");
+};
+function sendFeedback() {
+  sendTimers.forEach(clearTimeout);
+  sendBtn.classList.add("is-sent");
+  setLabel("Abrindo o WhatsApp…");
+  sendTimers = [
+    setTimeout(() => setLabel("✓ Mensagem pronta"), 900),
+    setTimeout(() => { setLabel("Enviar pelo WhatsApp"); sendBtn.classList.remove("is-sent"); }, 3900),
+  ];
+}

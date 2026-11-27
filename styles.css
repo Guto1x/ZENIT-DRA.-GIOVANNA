@@ -805,3 +805,26 @@ a, button, label, summary, select { touch-action: manipulation; } /* clique sem 
 @media (prefers-reduced-transparency: reduce) {
   .header.is-scrolled { background: var(--cream-50); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
+
+/* ---------- Oportunidades de animação ---------- */
+:root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+/* 1. Botão de envio: troca de texto */
+.btn__label { display: inline-block; }
+.btn__label.is-swap { animation: labelIn 200ms var(--ease-out); }
+@keyframes labelIn { from { opacity: 0; transform: translateY(4px); } }
+#sendBtn.is-sent { background: var(--green-800); }
+/* 2. FAQ: abre e fecha com altura suave (navegadores novos) */
+.faq { interpolate-size: allow-keywords; }
+.faq details::details-content {
+  height: 0; overflow: clip;
+  transition: height 250ms var(--ease-out), content-visibility 250ms allow-discrete;
+}
+.faq details[open]::details-content { height: auto; }
+/* 3. Aviso do telefone */
+.field-hint:not(:empty) { animation: hintIn 150ms var(--ease-out); }
+@keyframes hintIn { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) {
+  .btn__label.is-swap { animation: labelFade 200ms ease; }
+  @keyframes labelFade { from { opacity: 0; } }
+  .faq details::details-content { transition: none; }
+}
