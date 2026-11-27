@@ -828,3 +828,15 @@ a, button, label, summary, select { touch-action: manipulation; } /* clique sem 
   @keyframes labelFade { from { opacity: 0; } }
   .faq details::details-content { transition: none; }
 }
+
+/* ---------- Critique: contraste e celular ---------- */
+.eyebrow { color: #5c6458; } /* 4,5:1+ sobre o creme */
+@media (max-width: 560px) {
+  .hero__actions .btn--link { justify-content: flex-start; padding-inline: .2rem; } /* link à esquerda: o botão do WhatsApp não cobre */
+}
+
+/* ---------- Mapa e horário ---------- */
+.contact-list__note { display: block; font-size: .8rem; opacity: .7; margin-top: .2rem; }
+.map { margin-top: 2rem; border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(239, 236, 229, .15); }
+.map iframe { display: block; width: 100%; height: 220px; border: 0; filter: grayscale(.35) contrast(1.05); }
+.map__link { display: block; padding: .8rem 1rem; font-size: .85rem; font-weight: 600; color: var(--cream-100); background: rgba(239, 236, 229, .06); }

@@ -2,9 +2,9 @@
    CONFIGURAÇÃO: preencha os dados reais do consultório aqui
    ========================================================= */
 const CONFIG = {
-  whatsapp: "5544999000568",            // DDI + DDD + número, só dígitos
-  phoneLabel: "(44) 99900-0568",
-  address: "Mundo Novo - MS",           // ex.: "Rua X, 123 - Centro, Mundo Novo - MS"
+  whatsapp: "5567992889429",            // DDI + DDD + número, só dígitos
+  phoneLabel: "(67) 99288-9429",
+  address: "Av. Campo Grande, 1501 - Centro, Mundo Novo - MS, 79980-007",
   cro: "CRO-MS 7090",
 };
 
