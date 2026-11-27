@@ -48,13 +48,31 @@ window.addEventListener("scroll", onScroll, { passive: true });
 // Menu mobile
 const toggle = $("#menuToggle");
 const nav = $("#nav");
+const scrim = document.createElement("div");
+scrim.className = "nav-scrim";
+document.body.appendChild(scrim);
 const setMenu = open => {
   nav.classList.toggle("is-open", open);
+  scrim.classList.toggle("is-on", open);
   toggle.setAttribute("aria-expanded", String(open));
   toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
 };
 toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
 nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+scrim.addEventListener("click", () => setMenu(false));
+document.addEventListener("keydown", e => e.key === "Escape" && setMenu(false));
+
+// Menu: destaca a seção atual ("onde estou?")
+const navLinks = [...nav.querySelectorAll('a[href^="#"]:not(.btn)')];
+const sections = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const markCurrent = () => {
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let cur = null;
+  sections.forEach(sec => { if (sec.offsetTop <= y) cur = sec.id; });
+  navLinks.forEach(a => a.classList.toggle("is-current", a.getAttribute("href") === "#" + cur));
+};
+markCurrent();
+window.addEventListener("scroll", markCurrent, { passive: true });
 
 // Depoimentos
 const track = $("#reviews");
@@ -96,8 +114,8 @@ form.addEventListener("submit", e => {
   e.preventDefault();
   const nome = form.nome.value.trim();
   const tel = form.tel.value.trim();
-  form.nome.classList.toggle("is-invalid", !nome);
-  form.tel.classList.toggle("is-invalid", tel.replace(/\D/g, "").length < 10);
+  checkNome();
+  checkTel();
   if (!nome || tel.replace(/\D/g, "").length < 10) {
     err.textContent = "Preencha seu nome e um telefone com DDD.";
     return;
@@ -114,6 +132,28 @@ form.addEventListener("submit", e => {
   ].filter(Boolean).join("\n");
   window.open(waLink(msg), "_blank", "noopener");
 });
+
+// Validação na hora (ao sair do campo)
+const hint = document.createElement("span");
+hint.className = "field-hint";
+hint.setAttribute("aria-live", "polite");
+form.tel.after(hint);
+const telDigits = () => form.tel.value.replace(/\D/g, "").length;
+const checkNome = () => {
+  const ok = form.nome.value.trim().length >= 2;
+  form.nome.classList.toggle("is-ok", ok);
+  form.nome.classList.toggle("is-invalid", !ok);
+};
+const checkTel = () => {
+  const n = telDigits(), ok = n >= 10;
+  form.tel.classList.toggle("is-ok", ok);
+  form.tel.classList.toggle("is-invalid", !ok);
+  hint.textContent = ok ? "" : n === 0 ? "Informe seu telefone com DDD" : "Faltam números: use DDD + 9 dígitos";
+};
+form.nome.addEventListener("blur", () => form.nome.value && checkNome());
+form.tel.addEventListener("blur", () => form.tel.value && checkTel());
+form.nome.addEventListener("input", () => form.nome.classList.contains("is-invalid") && checkNome());
+form.tel.addEventListener("input", () => (form.tel.classList.contains("is-invalid") || telDigits() >= 10) && checkTel());
 
 // Máscara simples de telefone
 form.tel.addEventListener("input", e => {
